@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Civitai to ComfyUI Downloader",
+  "version": "1.0.0",
+  "description": "One-click download of Civitai (.com & .red) models directly into sorted ComfyUI folders (checkpoints, loras, embeddings, etc.).",
+  "permissions": [
+    "downloads",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://civitai.com/*",
+    "https://civitai.red/*",
+    "https://*.civitai.com/*",
+    "https://*.civitai.red/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Civitai to ComfyUI Settings",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "popup.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://civitai.com/*",
+        "https://civitai.red/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

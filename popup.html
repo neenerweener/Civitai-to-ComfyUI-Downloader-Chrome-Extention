@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Civitai to ComfyUI Settings</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="title-row">
+        <h1>Civitai &rarr; ComfyUI</h1>
+        <span class="version">v1.0</span>
+      </div>
+      <p class="subtitle">Auto-sort Civitai (.com &amp; .red) downloads by model type</p>
+    </header>
+
+    <section class="section">
+      <label class="label" for="rootFolderPath">ComfyUI Shared Root Path</label>
+      <input type="text" id="rootFolderPath" placeholder="E:\Comfy-Desktop\ComfyUI-Shared" />
+      <p class="hint">
+        Your target ComfyUI folder on disk. Because Chrome extensions save relative to Chrome's Downloads folder, choose one of the two modes below:
+      </p>
+
+      <div class="mode-cards">
+        <button type="button" class="mode-btn" id="modeJunctionBtn">
+          <strong>Mode A: Keep Default Chrome Downloads</strong>
+          <span>Uses subfolder <code>ComfyUI-Shared/models/...</code> linked to <code>E:\Comfy-Desktop\ComfyUI-Shared</code></span>
+        </button>
+        <button type="button" class="mode-btn" id="modeDirectBtn">
+          <strong>Mode B: Chrome Downloads = ComfyUI Root</strong>
+          <span>Uses subfolder <code>models/...</code> when Chrome's download folder is set to <code>E:\Comfy-Desktop\ComfyUI-Shared</code></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section">
+      <label class="label" for="downloadSubfolderPrefix">Relative Subfolder Prefix (inside Chrome Downloads)</label>
+      <input type="text" id="downloadSubfolderPrefix" placeholder="ComfyUI-Shared/models" />
+      <p class="hint">
+        Example output path: <code id="previewPath">ComfyUI-Shared/models/loras/model.safetensors</code>
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="checkbox-row">
+        <input type="checkbox" id="interceptNativeDownloads" />
+        <label for="interceptNativeDownloads">Also auto-sort when clicking Civitai's native download button</label>
+      </div>
+    </section>
+
+    <section class="section">
+      <label class="label" for="apiKey">Civitai API Key (Optional)</label>
+      <input type="password" id="apiKey" placeholder="Paste API token for login-restricted models" />
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="label">Model Type &rarr; Subfolder Mapping</span>
+        <button type="button" class="link-btn" id="resetDefaultsBtn">Reset Defaults</button>
+      </div>
+      <div class="mapping-grid" id="mappingGrid">
+        <!-- Populated by popup.js -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <button type="button" class="save-btn" id="saveBtn">Save Settings</button>
+      <span class="status-msg" id="statusMsg"></span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

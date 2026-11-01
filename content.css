@@ -1,0 +1,253 @@
+#civitai-comfy-downloader-bar {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 2147483640;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #f8f9fa;
+  width: 330px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.ccd-card {
+  background: rgba(20, 21, 23, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(34, 139, 230, 0.2);
+  transition: all 0.2s ease;
+}
+
+.ccd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ccd-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ccd-type-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.ccd-base-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ced4da;
+}
+
+.ccd-size {
+  font-size: 11px;
+  color: #909296;
+}
+
+.ccd-minimize-btn {
+  background: transparent;
+  border: none;
+  color: #909296;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.ccd-minimize-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.ccd-body {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ccd-body.ccd-collapsed {
+  display: none;
+}
+
+.ccd-title {
+  font-size: 13px;
+  line-height: 1.35;
+  color: #e9ecef;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ccd-title strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ccd-version-name {
+  font-size: 11.5px;
+  color: #4dabf7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ccd-target-folder {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-family: Consolas, "Courier New", monospace;
+  color: #a5d8ff;
+  background: rgba(34, 139, 230, 0.12);
+  border: 1px solid rgba(34, 139, 230, 0.28);
+  padding: 5px 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ccd-file-select {
+  width: 100%;
+  background: #25262b;
+  color: #f1f3f5;
+  border: 1px solid #373a40;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+  outline: none;
+}
+
+.ccd-file-select:focus {
+  border-color: #228be6;
+}
+
+.ccd-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #228be6 0%, #1971c2 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+.ccd-download-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.ccd-download-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.ccd-download-btn:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.ccd-download-btn.ccd-success {
+  background: linear-gradient(135deg, #2b8a3e 0%, #2f9e44 100%);
+}
+
+.ccd-download-btn.ccd-error {
+  background: linear-gradient(135deg, #c92a2a 0%, #e03131 100%);
+}
+
+/* Inline secondary button injected directly inside Civitai's native Download box */
+.ccd-inline-wrapper {
+  margin-top: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.ccd-inline-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(156, 54, 181, 0.55);
+  background: rgba(156, 54, 181, 0.18);
+  color: #e599f7;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ccd-inline-btn:hover:not(:disabled) {
+  background: rgba(156, 54, 181, 0.28);
+  border-color: rgba(174, 62, 201, 0.85);
+  color: #f3d9fa;
+}
+
+.ccd-inline-btn:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.ccd-inline-btn.ccd-success {
+  background: rgba(43, 138, 62, 0.25);
+  border-color: rgba(64, 192, 87, 0.7);
+  color: #8ce99a;
+}
+
+.ccd-inline-btn.ccd-error {
+  background: rgba(201, 42, 42, 0.25);
+  border-color: rgba(250, 82, 82, 0.7);
+  color: #ffa8a8;
+}
+
+.ccd-inline-subtext {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #909296;
+  padding: 0 2px;
+}
+
+.ccd-inline-subtext strong {
+  color: #ced4da;
+}
+
+.ccd-inline-subtext code {
+  font-family: Consolas, "Courier New", monospace;
+  color: #74c0fc;
+  background: rgba(34, 139, 230, 0.12);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
